@@ -1,13 +1,13 @@
 # Note this image doesn't really mater for hostprocess
 # the files in the image are copied to $env:CONTAINER_SANDBOX_MOUNT_POINT on the host
 # but the file system is the Host NOT the container
-ARG BASE="mcr.microsoft.com/windows/nanoserver:1809"
+ARG BASE="mcr.microsoft.com/windows/servercore:20H2"
 
-FROM --platform=linux/amd64 curlimages/curl as bins
-ARG k8sVersion="v1.22.0"
+# FROM --platform=linux/amd64 curlimages/curl as bins
+FROM $BASE
 
 WORKDIR /kube-proxy
-RUN curl -LO https://dl.k8s.io/$k8sVersion/bin/windows/amd64/kube-proxy.exe
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/windows/amd64/kube-proxy.exe
 RUN curl -LO https://raw.githubusercontent.com/microsoft/SDN/master/Kubernetes/windows/hns.psm1
 
 FROM $BASE
