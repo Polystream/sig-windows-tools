@@ -1,7 +1,7 @@
 # Note this image doesn't really mater for hostprocess
 # the files in the image are copied to $env:CONTAINER_SANDBOX_MOUNT_POINT on the host
 # but the file system is the Host NOT the container
-ARG BASE="mcr.microsoft.com/windows/servercore:20H2"
+ARG BASE="mcr.microsoft.com/powershell:nanoserver-ltsc2022"
 
 # FROM --platform=linux/amd64 curlimages/curl as bins
 FROM $BASE
