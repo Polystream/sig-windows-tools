@@ -18,6 +18,7 @@ $cniJson = get-content $env:CONTAINER_SANDBOX_MOUNT_POINT/etc/kube-flannel-windo
 $serviceSubnet = get-content $env:CONTAINER_SANDBOX_MOUNT_POINT/etc/kubeadm-config/ClusterConfiguration | ForEach-Object -Process {if($_.Contains("serviceSubnet:")) {$_.Trim().Split()[1]}}
 $podSubnet = get-content $env:CONTAINER_SANDBOX_MOUNT_POINT/etc/kubeadm-config/ClusterConfiguration | ForEach-Object -Process {if($_.Contains("podSubnet:")) {$_.Trim().Split()[1]}}
 
+$na = Get-NetRoute | Where { $_.DestinationPrefix -eq '0.0.0.0/0' } | Select-Object -Property ifIndex
 $managementIP = (Get-NetIPAddress -ifIndex $na[0].ifIndex -AddressFamily IPv4).IPAddress
 
 #set info and save
