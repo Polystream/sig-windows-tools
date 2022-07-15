@@ -14,7 +14,7 @@ ARG flannelVersion="v0.18.1"
 # flannel.exe and hostlocal.exe from containernetworking 
 # flannel.exe recently moved to https://github.com/flannel-io/cni-plugin but has no releases
 WORKDIR /cni
-RUN curl -Lo cni.tgz https://github.com/containernetworking/plugins/releases/download/v1.1.1/cni-plugins-windows-amd64-v1.1.1.tgz
+RUN curl -Lo cni.tgz https://github.com/containernetworking/plugins/releases/download/v1.0.0/cni-plugins-windows-amd64-v1.0.0.tgz
 RUN tar -xf cni.tgz
 RUN del cni.tgz
 
