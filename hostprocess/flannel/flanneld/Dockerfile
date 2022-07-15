@@ -22,7 +22,8 @@ RUN curl -Lo cni.zip https://github.com/microsoft/windows-container-networking/r
 RUN tar -xf /cni/cni.zip
 
 WORKDIR /flannel 
-RUN curl -Lo flanneld.exe https://github.com/coreos/flannel/releases/download/v0.18.1/flanneld.exe
+RUN curl -Lo flannel-windows.tgz https://github.com/flannel-io/cni-plugin/releases/download/v1.1.0/cni-plugin-flannel-windows-amd64-v1.1.0.tgz
+RUN tar -xf flannel-windows.tgz
 
 #FROM $BASE
 
@@ -30,7 +31,7 @@ RUN curl -Lo flanneld.exe https://github.com/coreos/flannel/releases/download/v0
 
 ADD https://raw.githubusercontent.com/microsoft/SDN/master/Kubernetes/windows/hns.psm1 /flannel/hns.psm1
 COPY start.ps1 /flannel/start.ps1
-#COPY --from=bins /cni /cni
-#COPY --from=bins /flannel/flanneld.exe /flannel/flanneld.exe
+# COPY --from=bins /cni /cni
+# COPY --from=bins /flannel/flanneld.exe /flannel/flanneld.exe
 
 ENTRYPOINT ["PowerShell", "/c", "$env:CONTAINER_SANDBOX_MOUNT_POINT/flannel/start.ps1"]
