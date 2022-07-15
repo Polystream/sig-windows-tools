@@ -23,7 +23,8 @@ RUN tar -xf /cni/cni.zip
 
 WORKDIR /flannel 
 RUN curl -Lo flannel.exe https://github.com/flannel-io/cni-plugin/releases/download/v1.0/flannel.exe
-
+RUN curl -Lo windows-amd64.tar.gz https://github.com/flannel-io/flannel/releases/download/v0.19.0/flannel-v0.19.0-windows-amd64.tar.gz
+RUN tar -xf /flannel/windows-amd64.tar.gz
 
 #FROM $BASE
 
