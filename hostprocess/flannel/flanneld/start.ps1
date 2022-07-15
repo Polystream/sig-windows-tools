@@ -40,4 +40,4 @@ write-host $env:POD_NAME
 write-host $env:POD_NAMESPACE
 
 Write-Host "Starting flannel"
-& $env:CONTAINER_SANDBOX_MOUNT_POINT/flannel/flannel-amd64.exe --kube-subnet-mgr --kubeconfig-file $env:CONTAINER_SANDBOX_MOUNT_POINT/flannel-config-file/kubeconfig.conf --iface $managementIP
+& $env:CONTAINER_SANDBOX_MOUNT_POINT/flannel/flannel.exe --kube-subnet-mgr --kubeconfig-file $env:CONTAINER_SANDBOX_MOUNT_POINT/flannel-config-file/kubeconfig.conf --iface $managementIP
