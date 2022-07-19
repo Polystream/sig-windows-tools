@@ -4,9 +4,9 @@
 FROM mcr.microsoft.com/windows/servercore:20H2
 
 #FROM --platform=linux/amd64 curlimages/curl as bins
-ARG containernetworkingCniVersion="1.1.1"
-ARG cniVersion="0.3.0"
-ARG flannelVersion="v0.18.1"
+# ARG containernetworkingCniVersion="1.1.1"
+# ARG cniVersion="0.3.0"
+# ARG flannelVersion="v0.18.1"
 
 # Todo simplify this
 # We need both sets of binaries 
