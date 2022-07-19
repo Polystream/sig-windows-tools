@@ -30,6 +30,7 @@ Set-Content -Path c:/etc/cni/net.d/10-flannel.conf ($cniJson | ConvertTo-Json -d
 # set route for metadata servers in clouds
 # https://github.com/kubernetes-sigs/sig-windows-tools/issues/36
 Write-Host "add route"
+route DELETE 169.254.169.254
 route /p add 169.254.169.254 mask 255.255.255.255 0.0.0.0
 
 write-host "copy sa info (should be able to do this with a change to go client"
