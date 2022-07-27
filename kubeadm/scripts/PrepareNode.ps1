@@ -104,7 +104,7 @@ if ($global:containerRuntime -eq "Docker") {
     }
 }
 
-$cmd = "C:\k\kubelet.exe $global:KubeletArgs --cert-dir=$env:SYSTEMDRIVE\var\lib\kubelet\pki --config=/var/lib/kubelet/config.yaml --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf --hostname-override=$(hostname) --log-dir=/var/log/kubelet--enforce-node-allocatable=`"`" --cgroups-per-qos=false --logtostderr=false"
+$cmd = "C:\k\kubelet.exe $global:KubeletArgs --cert-dir=$env:SYSTEMDRIVE\var\lib\kubelet\pki --config=/var/lib/kubelet/config.yaml --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf --hostname-override=$(hostname) --log-dir=/var/log/kubelet --enforce-node-allocatable=`"`" --cgroups-per-qos=false --logtostderr=false"
 
 Invoke-Expression $cmd'
 $StartKubeletFileContent = $StartKubeletFileContent -replace "{{CONTAINER_RUNTIME}}", "`"$ContainerRuntime`""
